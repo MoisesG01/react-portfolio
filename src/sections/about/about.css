@@ -313,7 +313,7 @@
   }
 
   .about__portrait img {
-    max-width: 280px;
+    display: none;
   }
 
   .about__right .btn {
