@@ -1,32 +1,69 @@
 nav {
   width: 100vw;
   height: 5rem;
-  display: grid;
-  place-items: center;
-  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(54, 0, 67, 0.651); /* semi-transparente */
+  backdrop-filter: blur(10px); /* efeito vidro fosco */
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 9;
-  box-shadow: 0 1rem 1.5rem hsla(var(--primary-hue), 68%, 42%, 20%);
-  transition: var(--transition);
+  z-index: 999;
+  box-shadow: 0 1rem 1.5rem hsla(var(--primary-hue), 68%, 42%, 0.2);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav__container {
+  width: 90%;
+  max-width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .nav__logo {
-  width: 2.5rem;
+  width: 2.8rem;
+  height: 2.8rem;
   border-radius: 50%;
   overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.nav__logo:hover {
+  transform: rotate(10deg) scale(1.05);
 }
 
 .nav__menu {
   display: flex;
-  gap: 3.5rem;
+  gap: 2.5rem;
+}
+
+.nav__menu a {
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav__menu a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  bottom: -4px;
+  left: 0;
+  transition: width 0.3s ease;
+}
+
+.nav__menu a:hover {
+  color: var(--color-accent, #00ffd5);
+}
+
+.nav__menu a:hover::after {
+  width: 100%;
 }
 
 #theme__icon {
@@ -34,10 +71,14 @@ nav {
   color: white;
   font-size: 2rem;
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-/* HIDE NAV MENU ON TABLETS AND PHONES */
+#theme__icon:hover {
+  transform: rotate(20deg) scale(1.1);
+}
 
+/* RESPONSIVO */
 @media screen and (max-width: 1024px) {
   .nav__menu {
     display: none;
